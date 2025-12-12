@@ -8,12 +8,12 @@ from sklearn.metrics import (accuracy_score, f1_score,
 from sklearn.model_selection import train_test_split
 
 from src.data_loader import DataLoader
-from src.models.decision_tree_model import DecisionTreeModel
 from src.models.knn_model import KNNModel
 from src.models.logistic_regression_model import LogisticRegressionModel
-from src.models.mlp_model import MLPModel
 from src.models.softmax_model import SoftmaxModel
 from src.models.svm_model import SVMModel
+# from src.models.decision_tree_model import DecisionTreeModel
+# from src.models.mlp_model import MLPModel
 
 os.environ['LOKY_MAX_CPU_COUNT'] = '1'
 
@@ -34,13 +34,12 @@ def main():
 
     # Define the list of models to test
     models_to_test = [
-        ("Logistic Regression", LogisticRegressionModel()),
         ("K-Nearest Neighbors", KNNModel()),
-        ("Support Vector Machine", SVMModel()),
-        ("Decision Tree", DecisionTreeModel()),
+        ("Logistic Regression", LogisticRegressionModel()),
         ("Softmax", SoftmaxModel()),
-        ("MLP (Neural Network)", MLPModel())
-
+        ("Support Vector Machine", SVMModel()),
+        # ("Decision Tree", DecisionTreeModel()),
+        # ("MLP (Neural Network)", MLPModel())
     ]
 
     # dataframe to store final results for comparison
