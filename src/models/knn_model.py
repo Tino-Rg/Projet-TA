@@ -8,7 +8,7 @@ from .base_model import BaseModel
 
 class KNNModel(BaseModel):
     """
-    K-Nearest Neighbors (Method 2).
+    K-Nearest Neighbors.
     Distance-based classifier. Heavily relies on Feature Scaling.
     """
 
