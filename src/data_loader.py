@@ -22,12 +22,12 @@ class DataLoader:
         """
         df = pd.read_csv(self.file_path)
 
-        if 'id' in df.columns:
-            df = df.drop(columns=['id'])
+        if "id" in df.columns:
+            df = df.drop(columns=["id"])
 
         # Separate Features (X) and Target (y)
-        X = df.drop(columns=['species'])
-        y_raw = df['species']
+        X = df.drop(columns=["species"])
+        y_raw = df["species"]
 
         # Encode target labels
         y = self.le.fit_transform(y_raw)

@@ -5,6 +5,7 @@ from sklearn.svm import SVC
 
 from .base_model import BaseModel
 
+
 class SVMModel(BaseModel):
     """
     Support Vector Machine.
@@ -20,26 +21,23 @@ class SVMModel(BaseModel):
         print(f"Training Support Vector Machine (SVM)...")
 
         # Pipeline
-        pipeline = Pipeline([
-            ('scaler', StandardScaler()),  # for SVM
-            ('svm', SVC(random_state=self.random_state))
-        ])
+        pipeline = Pipeline(
+            [
+                ("scaler", StandardScaler()),  # for SVM
+                ("svm", SVC(random_state=self.random_state)),
+            ]
+        )
 
         # Hyperparameters
         param_grid = {
-            'svm__kernel': ['linear', 'rbf'],
-            'svm__C': [1, 10, 100, 1000],
-            'svm__gamma': ['scale', 0.001, 0.01]
+            "svm__kernel": ["linear", "rbf"],
+            "svm__C": [1, 10, 100, 1000],
+            "svm__gamma": ["scale", 0.001, 0.01],
         }
 
         # Grid Search
         grid_search = GridSearchCV(
-            pipeline,
-            param_grid,
-            cv=5,
-            scoring='accuracy',
-            n_jobs=1,
-            verbose=1
+            pipeline, param_grid, cv=5, scoring="accuracy", n_jobs=1, verbose=1
         )
 
         grid_search.fit(X_train, y_train)

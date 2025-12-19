@@ -20,26 +20,20 @@ class KNNModel(BaseModel):
         print(f"Training K-Nearest Neighbors (KNN)...")
 
         # Pipeline
-        pipeline = Pipeline([
-            ('scaler', StandardScaler()),
-            ('knn', KNeighborsClassifier())
-        ])
+        pipeline = Pipeline(
+            [("scaler", StandardScaler()), ("knn", KNeighborsClassifier())]
+        )
 
-        # Hyperparamètres
+        # Hyperparameters
         param_grid = {
-            'knn__n_neighbors': [3, 5, 7, 9, 11],
-            'knn__weights': ['uniform', 'distance'],
-            'knn__metric': ['euclidean', 'manhattan']
+            "knn__n_neighbors": [3, 5, 7, 9, 11],
+            "knn__weights": ["uniform", "distance"],
+            "knn__metric": ["euclidean", "manhattan"],
         }
 
         # Grid Search
         grid_search = GridSearchCV(
-            pipeline,
-            param_grid,
-            cv=5,
-            scoring='accuracy',
-            n_jobs=1,
-            verbose=1
+            pipeline, param_grid, cv=5, scoring="accuracy", n_jobs=1, verbose=1
         )
 
         grid_search.fit(X_train, y_train)
